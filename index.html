@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Currency Converter</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        .converter {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 2px solid white;
+        }
+        select, input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: white;
+            color: black;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="converter">
+        <h2>Currency Converter</h2>
+        <select id="fromCurrency">
+            <option value="INR">Indian Rupee (INR)</option>
+            <option value="USD">US Dollar (USD)</option>
+            <!-- Add more currency options here -->
+        </select>
+        <input type="number" id="amount" placeholder="Enter amount">
+        <button onclick="convertCurrency()">Convert</button>
+        <h3>Converted Amount: <span id="convertedAmount"></span></h3>
+    </div>
+
+    <script>
+        function convertCurrency() {
+            var fromCurrency = document.getElementById("fromCurrency").value;
+            var amount = parseFloat(document.getElementById("amount").value);
+            var convertedAmount = 0;
+
+            if (fromCurrency === "INR") {
+                convertedAmount = amount / 74.5; // Conversion rate for INR to USD
+            } else if (fromCurrency === "USD") {
+                convertedAmount = amount * 74.5; // Conversion rate for USD to INR
+            }
+
+            document.getElementById("convertedAmount").textContent = convertedAmount.toFixed(2);
+        }
+    </script>
+</body>
+</html>
